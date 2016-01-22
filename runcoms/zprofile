@@ -14,22 +14,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 #
-# Editors
-#
-
-export EDITOR='nano'
-export VISUAL='nano'
-export PAGER='less'
-
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
-
-#
 # Paths
 #
 
@@ -72,3 +56,27 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+export LANG="ja_JP.UTF-8"
+export TZ="Asia/Tokyo"
+export DISPLAY=":0.0"
+
+export EDITOR="vim"
+export PAGER="less"
+export LESSCHARSET="utf-8"
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/local/vim/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+export MANPATH="/usr/local/share/man:$MANPATH"
+
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+which npm > /dev/null && [[ -d `npm bin -g` ]] && export PATH=`npm bin -g`:$PATH
+
+if [ -e ~/.zshenv.local ]; then
+    source ~/.zshenv.local
+fi

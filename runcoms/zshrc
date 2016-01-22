@@ -10,4 +10,40 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+unalias e
+
 # Customize to your needs...
+
+bindkey '^P' history-beginning-search-backward # 先頭マッチのヒストリサーチ
+bindkey '^N' history-beginning-search-forward  # 先頭マッチのヒストリサーチ
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+# Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
+setopt NO_flow_control
+
+# シェルが終了しても裏ジョブに HUP シグナルを送らないようにする
+setopt NO_hup
+
+# コマンドラインでも # 以降をコメントと見なす
+setopt interactive_comments
+
+# ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
+setopt mark_dirs
+
+# 8 ビット目を通すようになり、日本語のファイル名などを見れるようになる
+setopt print_eightbit
+
+# 戻り値が 0 以外の場合終了コードを表示する
+setopt print_exit_value
+
+### エイリアスファイルがあれば読み込む
+if [ -e ~/.aliases ]; then
+    source ~/.aliases
+fi
+
+### ローカル設定があれば読み込む
+if [ -e ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
