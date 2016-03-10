@@ -68,12 +68,13 @@ export LESSCHARSET="utf-8"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/local/vim/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 
 export MANPATH="/usr/local/share/man:$MANPATH"
 
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export PATH="$HOME/bin:$PATH"
 
 which npm > /dev/null && [[ -d `npm bin -g` ]] && export PATH=`npm bin -g`:$PATH
 
