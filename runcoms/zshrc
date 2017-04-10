@@ -11,6 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 unalias e
+unalias b
 
 # Customize to your needs...
 
@@ -41,6 +42,11 @@ setopt print_exit_value
 ### エイリアスファイルがあれば読み込む
 if [ -e ~/.aliases ]; then
     source ~/.aliases
+fi
+
+### 関数ファイルがあれば読み込む
+if [ -e ~/.zshfunc ]; then
+    source ~/.zshfunc
 fi
 
 ### ローカル設定があれば読み込む
